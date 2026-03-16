@@ -1,0 +1,36 @@
+{
+  "name": "kalvium-video-generator",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^41.0.2",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "kalvium.video.generator",
+    "productName": "Kalvium Video Generator",
+    "files": [
+      "client/dist/**/*",
+      "server/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "binaries",
+        "to": "binaries"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
